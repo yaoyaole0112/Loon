@@ -1,0 +1,11 @@
+#!name= JDPrice
+#!desc= 京东淘宝比价
+
+[Script]
+# 京东淘宝比价
+http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=比价
+http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=比价
+http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js, tag=比价
+
+[MITM]
+hostname = *.uve.weibo.com, api.weibo.cn, api.weibo.com, mapi.weibo.com, mapi.weibo.cn, h5.sinaimg.cn, new.vip.weibo.cn, pay.sc.weibo.com, ios.prod.ftl.netflix.com, api.m.jd.com, trade-acs.m.taobao.com,app.bilibili.com,api.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, *.kuwo.cn, vip1.kuwo.cn, weixin110.qq.com
