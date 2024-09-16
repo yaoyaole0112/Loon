@@ -1,5 +1,5 @@
 /*
- * 节点解锁查询
+ * 节点GPT解锁查询
  * 感谢并修改自 https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/streaming-ui-check.js
  * 脚本功能：检查节点是否支持Dazn/Discovery/Param/Disney/Netflix/ChatGPT/YouTube解锁服务
  * 原作者：XIAO_KOP
@@ -37,14 +37,14 @@ let result = {
 let arrow = " ➜ "
 
 Promise.all([ytbTest(),disneyLocation(),nfTest(),daznTest(),parmTest(),discoveryTest(),gptTest()]).then(value => {
-    let content = "------------------------------------</br>"+([result["ChatGPT"],result["YouTube"]]).join("</br></br>")
+    let content = "------------------------------------</br>"+([result["ChatGPT"]]).join("</br></br>")
     content = content + "</br>------------------------------------</br>"+"<font color=#CD5C5C>"+"<b>节点</b> ➟ " + nodeName+ "</font>"
     content =`<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + content + `</p>`
     console.log(content);
     $done({"title":result["title"],"htmlMessage":content})
 }).catch (values => {
     console.log("reject:" + values);
-    let content = "------------------------------------</br>"+([result["ChatGPT"],result["YouTube"]]).join("</br></br>")
+    let content = "------------------------------------</br>"+([result["ChatGPT"]]).join("</br></br>")
     content = content + "</br>------------------------------------</br>"+"<font color=#CD5C5C>"+"<b>节点</b> ➟ " + nodeName+ "</font>"
     content =`<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + content + `</p>`
     $done({"title":result["title"],"htmlMessage":content})
