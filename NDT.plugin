@@ -169,12 +169,12 @@ function ytbTest() {
                 return;
             }
             if (response.status !== 200) {
-                result["YouTube"] = "<b>YouTube Premium: </b>检测失败 ❗️";
+                result["YouTube"] = "<b>YouTub: </b>检测失败 ❗️";
                 resolve(response.status);
             } else {
               console.log("YTB request data:" + response.status);
               if (data.indexOf('Premium is not available in your country') !== -1) {
-                  result["YouTube"] = "<b>YouTube Premium: </b>未支持 🚫"
+                  result["YouTube"] = "<b>YouTube: </b> ❌"
                   resolve("YTB test failed");
               } else if (data.indexOf('Premium is not available in your country') == -1) {
                   let region = ''
@@ -188,10 +188,10 @@ function ytbTest() {
                       region = 'US'
                   }
                   console.log("YTB region:" + region);
-                  result["YouTube"] = "<b>YouTube Premium: </b>支持 "+arrow+flags.get(region.toUpperCase())+" ✅"
+                  result["YouTube"] = "<b>YouTube: </b>✅ "+arrow+flags.get(region.toUpperCase())
                   resolve(region);
               } else {
-                result["YouTube"] = "<b>YouTube Premium: </b>检测超时 🚦";
+                result["YouTube"] = "<b>YouTube: </b>检测超时 🚦";
                 resolve("timeout");
               }
             }
@@ -416,7 +416,7 @@ function gptTest() {
             console.log("----------GPT--------------");
             if (errormsg) {
                 console.log("GPT request failed:!!! " + errormsg);
-                result["ChatGPT"] = "<b>ChatGPT: </b>未支持 🚫"
+                result["ChatGPT"] = "<b>ChatGPT: </b>❌"
                 // resolve(errormsg);
                 resolve("不支持 ChatGPT")
                 return;
@@ -444,17 +444,17 @@ function gptTest() {
                     console.log("ChatGPT Region: "+region)
                     let res = support_countryCodes.indexOf(region)
                     if (res != -1) {
-                        result["ChatGPT"] = "<b>ChatGPT: </b>支持 "+arrow+flags.get(region.toUpperCase())+" ✅"
+                        result["ChatGPT"] = "<b>ChatGPT: </b>✅ "+arrow+flags.get(region.toUpperCase())
                         console.log("支持 ChatGPT")
                         resolve(region)
                     } else {
-                        result["ChatGPT"] = "<b>ChatGPT: </b>未支持 🚫"
+                        result["ChatGPT"] = "<b>ChatGPT: </b>❌"
                         console.log("不支持 ChatGPT")
                         resolve("不支持 ChatGPT")
                     }
                 })
             } else {
-                result["ChatGPT"] = "<b>ChatGPT: </b>未支持 🚫"
+                result["ChatGPT"] = "<b>ChatGPT: </b>❌"
                 console.log("不支持 ChatGPT")
                 resolve("不支持 ChatGPT")
             }
